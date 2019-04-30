@@ -5,6 +5,7 @@ endif()
 if(POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
+set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
 # ---[ Caffe project
 project(Caffe C CXX)
@@ -27,7 +28,7 @@ include(cmake/Summary.cmake)
 include(cmake/ConfigGen.cmake)
 
 # ---[ Options
-caffe_option(CPU_ONLY  "Build Caffe without CUDA support" OFF) # TODO: rename to USE_CUDA
+caffe_option(CPU_ONLY  "Build Caffe without CUDA support" ON) # TODO: rename to USE_CUDA
 caffe_option(USE_CUDNN "Build Caffe with cuDNN library support" ON IF NOT CPU_ONLY)
 caffe_option(USE_NCCL "Build Caffe with NCCL library support" OFF)
 caffe_option(BUILD_SHARED_LIBS "Build shared libraries" ON)
