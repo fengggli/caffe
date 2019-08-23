@@ -9,6 +9,7 @@ layer {
   }
   transform_param {
     mean_file: "examples/cifar10/mean.binaryproto"
+    crop_size: 32
   }
   data_param {
     source: "examples/cifar10/cifar10_train_lmdb"
