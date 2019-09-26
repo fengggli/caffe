@@ -6,7 +6,7 @@ Follow original dataset instruction
 
 Run with
 ```
-build/tools/caffe time -model models/resnet_simple/resnet_cifar.prototxt
+build/tools/caffe time -model models/resnet_simple/resnet_cifar.prototxt -iterations 10
 ```
 
 With nnpack-backend
