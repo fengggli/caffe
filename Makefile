@@ -36,7 +36,7 @@
 #
 
 PROJECT := caffe
-CONFIG_FILE := Makefile.config
+CONFIG_FILE := Makefile.config.sievert
 # Explicitly check for the config file, otherwise make -k will proceed anyway.
 ifeq ($(wildcard $(CONFIG_FILE)),)
 $(error $(CONFIG_FILE) not found. See $(CONFIG_FILE).example.)
@@ -451,9 +451,11 @@ ifeq ($(DEBUG), 1)
 	COMMON_FLAGS += -DDEBUG -g -O0
 	NVCCFLAGS += -G
 else ifneq (,$(findstring icpc,$(CXX)))
+ifneq (,$(findstring stampede,$(CONFIG_FILE)))
 	COMMON_FLAGS += -DNDEBUG -O3 -xHost -xCOMMON-AVX512 -no-prec-div -fp-model fast=2
 else
 	COMMON_FLAGS += -DNDEBUG -O3
+endif
 endif
 
 # cuDNN acceleration configuration.
